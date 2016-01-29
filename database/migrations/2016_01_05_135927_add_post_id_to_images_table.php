@@ -1,0 +1,38 @@
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class AddPostIdToImagesTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+       // Schema::table('images', function (Blueprint $table) {
+            
+            if(Schema::hasColumn('images', 'post_id')) {
+                } else {
+                Schema::table('images', function (Blueprint $table) {
+                $table->integer('post_id');
+                });
+                }
+            
+       // });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('images', function (Blueprint $table) {
+            $table->dropColumn('post_id');
+        });
+    }
+}
